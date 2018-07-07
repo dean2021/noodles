@@ -107,6 +107,7 @@ func (n *Noodles) AddTask(task Task) error {
 	return nil
 }
 
+// 注册函数
 func (n *Noodles) Register(funcName string, function func([]interface{}) error) {
 	WorkFunc[funcName] = function
 }
