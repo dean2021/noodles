@@ -3,7 +3,7 @@
 
 Noodles(面条)是一款超轻量级分布式任务调度类库(太轻量级了,谈不上框架),类似于python的celery,大量参考benmanns的goworker.
 
-Noodles实现代码不到200行,能够实现goworker的核心功能。半小时读懂Noodles代码,自行定制功能。
+Noodles实现代码不到200行,能够实现goworker的核心功能,半小时读懂Noodles代码,自行定制功能。
 
 ## 安装
 
@@ -97,16 +97,10 @@ func main() {
 	noodle.Register("myFunc", myFunc)
 
 	// 监听新任务并调度执行
-	for {
-		err := noodle.Worker()
-		if err != nil {
-			fmt.Println("Error:", err)
-
-			// redis中断重试
-			time.Sleep(time.Second * 5)
-			continue
-		}
-	}
+    err := noodle.Worker()
+    if err != nil {
+        fmt.Println("Error:", err)
+    }
 }
 
 func myFunc(args []interface{}) error {
